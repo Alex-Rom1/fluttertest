@@ -3,24 +3,22 @@ import 'package:url_launcher/url_launcher.dart';
 
 class MainWid extends StatelessWidget{
   Widget build(BuildContext context){
-    return new Center(
-      child: new Column(
-        children: [
-          new Text('в МШП'),
-          new TextButton(
-              onPressed: () async {
-                Uri url = Uri.parse('https://informatics.ru');
-                if (await (canLaunchUrl(url))){
-                  await launchUrl(url);
-                } else {
-                  throw 'could not launch $url';
-                }
-              },
-              style: TextButton.styleFrom(backgroundColor: Colors.red),
-              child: new Text('посетить сайт', style: TextStyle(color: Colors.white))
-          )
-        ],
-      ),
+    return new Column(
+      children: [
+        Center(child: Text('Выберите пиццу', style: TextStyle(color: Colors.red, fontSize: 32))),
+        Row(mainAxisAlignment: MainAxisAlignment.spaceEvenly , children: [
+          TextButton(onPressed: (){}, child: Text('Пеперони'), style: TextButton.styleFrom(backgroundColor: Colors.red, foregroundColor: Colors.white)),
+          TextButton(onPressed: (){}, child: Text('Маргарита'), style: TextButton.styleFrom(backgroundColor: Colors.red, foregroundColor: Colors.white)),
+          TextButton(onPressed: (){}, child: Text('Гавайская'), style: TextButton.styleFrom(backgroundColor: Colors.red, foregroundColor: Colors.white)),
+        ]),
+        Center(child: Text('Размер пиццы', style: TextStyle(color: Colors.red, fontSize: 32))),
+        Row(mainAxisAlignment: MainAxisAlignment.spaceEvenly , children: [
+          TextButton(onPressed: (){}, child: Text('28 см'), style: TextButton.styleFrom(backgroundColor: Colors.red, foregroundColor: Colors.white)),
+          TextButton(onPressed: (){}, child: Text('32 см'), style: TextButton.styleFrom(backgroundColor: Colors.red, foregroundColor: Colors.white)),
+          TextButton(onPressed: (){}, child: Text('40 см'), style: TextButton.styleFrom(backgroundColor: Colors.red, foregroundColor: Colors.white)),
+        ]),
+        Padding(padding: EdgeInsets.all(20.0), child: TextButton(onPressed: (){}, child: Text('Заказать'), style: TextButton.styleFrom(backgroundColor: Colors.green, foregroundColor: Colors.white, minimumSize: Size(400, 50))))
+      ],
     );
   }
 }
@@ -30,8 +28,8 @@ void main(){
     new MaterialApp(
       debugShowCheckedModeBanner: false,
       home: new Scaffold(
-        appBar: new AppBar(title: new Text('Приглашение')),
-        body: new MainWid()
+        appBar: new AppBar(title: Text('Заказ пиццы')),
+        body: new MainWid(),
       ),
     )
   );
